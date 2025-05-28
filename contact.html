@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shifaul Fragrances • Contact</title>
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">FragranceCo</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navMenu"
+        aria-controls="navMenu"
+        aria-expanded="false"
+        aria-label="Toggle nav"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="py-5 bg-secondary text-white text-center">
+    <div class="container">
+      <h1 class="display-5">Get in Touch</h1>
+      <p class="lead">Questions, wholesale inquiries, or just a hello.</p>
+    </div>
+  </header>
+
+  <!-- Contact Info + Form -->
+  <main class="py-5">
+    <div class="container">
+      <div class="row gy-4">
+        <!-- Left: Contact details -->
+        <div class="col-lg-5">
+          <h2>Contact Details</h2>
+          <p>
+            <strong>Address:</strong><br />
+            123 Fragrance Lane<br />
+            Cityville, ST 12345
+          </p>
+          <p><strong>Phone:</strong> (555) 123-4567</p>
+          <p><strong>Email:</strong> <a href="mailto:info@shifaulfragrances.com">info@shifaulfragrances.com</a></p>
+          <p><strong>Hours:</strong><br />
+            Mon–Fri: 9 AM – 5 PM<br />
+            Sat: 10 AM – 2 PM<br />
+            Sun: Closed
+          </p>
+
+          <!-- Map embed -->
+          <div class="ratio ratio-4x3 mb-4">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18…YOUR_MAP_EMBED_CODE…"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+            ></iframe>
+          </div>
+
+          <!-- Social -->
+          <h5>Follow us</h5>
+          <a href="#" class="me-3">Instagram</a>
+          <a href="#" class="me-3">Facebook</a>
+          <a href="#">Twitter</a>
+        </div>
+
+        <!-- Right: Contact form -->
+        <div class="col-lg-7">
+          <h2>Send Us a Message</h2>
+          <form id="contact-form">
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input required type="text" class="form-control" id="name" name="name" />
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input
+                required
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="subject" class="form-label">Subject</label>
+              <input type="text" class="form-control" id="subject" name="subject" />
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label">Message</label>
+              <textarea
+                required
+                class="form-control"
+                id="message"
+                name="message"
+                rows="5"
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <div id="form-status" class="mt-3"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Bootstrap JS + your script -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+  ></script>
+  <script>
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxcZuMt48vURMUnZzyga__QsnCUSrTvIv0zbx39yKVwVi9tiiXAq-jlXSZ9YEG6RGwt/exec';
+
+    document.getElementById('contact-form').addEventListener('submit', e => {
+      e.preventDefault();
+      const data = {
+        name: e.target.name.value,
+        email: e.target.email.value,
+        subject: e.target.subject.value,
+        message: e.target.message.value
+      };
+      fetch(SCRIPT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+        .then(r => r.json())
+        .then(res => {
+          document.getElementById('form-status').textContent =
+            res.status === 'success'
+              ? 'Thanks! We received your message.'
+              : 'Oops—something went wrong.';
+          e.target.reset();
+        })
+        .catch(() => {
+          document.getElementById('form-status').textContent =
+            'Network error. Please try again.';
+        });
+    });
+  </script>
+</body>
+</html>
