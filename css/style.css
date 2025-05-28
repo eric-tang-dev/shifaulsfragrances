@@ -1,0 +1,27 @@
+/* Make the nav & hero start invisible for the fade-in */
+nav, .hero {
+  opacity: 0;
+}
+
+/* Hero background placeholder */
+.hero {
+  min-height: calc(100vh - 56px);
+  background: url('https://via.placeholder.com/1920x1080?text=Oil+Fragrance')
+    center/cover no-repeat;
+}
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeInUp 1s ease-out forwards;
+}
