@@ -25,3 +25,18 @@ nav, .hero {
 .fade-in {
   animation: fadeInUp 1s ease-out forwards;
 }
+
+/* product-card starts hidden & slightly down */
+.product-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+}
+
+/* when .visible is added, it animates into place */
+.product-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

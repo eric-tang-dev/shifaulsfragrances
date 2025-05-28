@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FragranceCo • Products</title>
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <!-- Your custom styles -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Navbar (same as index.html) -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">FragranceCo</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navMenu"
+        aria-controls="navMenu"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="py-5 bg-secondary text-white text-center">
+    <div class="container">
+      <h1 class="display-5">Our Signature Scents</h1>
+      <p class="lead">Explore our handcrafted oil fragrances</p>
+    </div>
+  </header>
+
+  <!-- Products Grid -->
+  <main class="py-5">
+    <div class="container">
+      <div class="row g-4">
+        <!-- Product Card 1 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card product-card h-100">
+            <img
+              src="images/placeholder1.jpg"
+              class="card-img-top"
+              alt="Essence No.1"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Essence No.1</h5>
+              <p class="card-text">
+                A vibrant burst of citrus blossoms with a hint of vanilla&nbsp;— perfect for daytime.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Product Card 2 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card product-card h-100">
+            <img
+              src="images/placeholder2.jpg"
+              class="card-img-top"
+              alt="Midnight Oud"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Midnight Oud</h5>
+              <p class="card-text">
+                Deep, smoky oud balanced by soft rose petals for an unforgettable evening aroma.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Product Card 3 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card product-card h-100">
+            <img
+              src="images/placeholder3.jpg"
+              class="card-img-top"
+              alt="Forest Mist"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Forest Mist</h5>
+              <p class="card-text">
+                Crisp pine and fresh eucalyptus evoke a walk through dew-covered woods.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Add more cards as needed -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Bootstrap JS bundle -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+  ></script>
+  <!-- Your custom script -->
+  <script src="js/script.js"></script>
+</body>
+</html>
