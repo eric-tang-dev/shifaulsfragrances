@@ -135,8 +135,7 @@
 
     form.addEventListener('submit', e => {
         e.preventDefault();
-
-        // Build a multipart/form-data request (no custom headers → no preflight)
+        // Build multipart/form-data (no preflight needed)
         const body = new FormData(form);
 
         fetch(SCRIPT_URL, {
@@ -146,10 +145,10 @@
         .then(r => r.json())
         .then(res => {
             if (res.status === 'success') {
-            status.textContent = '✅ Thanks! We got your message.';
             form.reset();
+            status.textContent = '✅ Thanks! We got your message.';
             } else {
-            status.textContent = `⚠️ Server error: ${res.message}`;
+            status.textContent = '⚠️ Error: ' + res.message;
             }
         })
         .catch(err => {
