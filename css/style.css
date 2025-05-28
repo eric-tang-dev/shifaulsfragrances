@@ -40,3 +40,20 @@ nav, .hero {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Fade-in helper already exists; just ensure timeline spacing */
+.timeline li {
+  position: relative;
+  padding-left: 1rem;
+  margin-bottom: 1.5rem;
+}
+.timeline li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.25rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: #0d6efd;
+  border-radius: 50%;
+}
