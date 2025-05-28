@@ -130,11 +130,9 @@
   <script>
     const SCRIPT_URL = 'hhttps://script.google.com/macros/s/AKfycbyqAHgEiF1ln1j-Xg8-icUmzPKR8xHz2Ltcs7HIJ9rDi7MTNkLtODKs46_MHzYpK0g/exec';
 
-    const form = document.getElementById('contact-form');
-    const status = document.getElementById('form-status');
-
-    form.addEventListener('submit', e => {
+    document.getElementById('contact-form').addEventListener('submit', e => {
         e.preventDefault();
+        const form = e.target;
         const data = {
         name:    form.name.value,
         email:   form.email.value,
@@ -143,16 +141,22 @@
         };
 
         fetch(SCRIPT_URL, {
-        method: 'POST',
-        mode:   'no-cors',                // ← skip CORS preflight
-        body:   JSON.stringify(data)      // ← no custom headers
+        method:  'POST',
+        headers: {'Content-Type':'application/json'},
+        body:    JSON.stringify(data)
         })
-        .then(() => {
-        status.textContent = '✅ Thanks! We got your message.';
-        form.reset();
+        .then(r => r.json())
+        .then(res => {
+            if (res.status === 'success') {
+            form.reset();
+            status.textContent = '✅ Thanks! We got your message.';
+            } else {
+            status.textContent = '⚠️ Error: ' + res.message;
+            }
         })
-        .catch(() => {
-        status.textContent = '⚠️ Oops—something went wrong.';
+        .catch(err => {
+            console.error(err);
+            status.textContent = '⚠️ Network or server error.';
         });
     });
   </script>
