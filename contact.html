@@ -130,30 +130,29 @@
   <script>
     const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxcZuMt48vURMUnZzyga__QsnCUSrTvIv0zbx39yKVwVi9tiiXAq-jlXSZ9YEG6RGwt/exec';
 
-    document.getElementById('contact-form').addEventListener('submit', e => {
-      e.preventDefault();
-      const data = {
-        name: e.target.name.value,
-        email: e.target.email.value,
-        subject: e.target.subject.value,
-        message: e.target.message.value
-      };
-      fetch(SCRIPT_URL, {
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        const data = {
+        name:    form.name.value,
+        email:   form.email.value,
+        subject: form.subject.value,
+        message: form.message.value
+        };
+
+        fetch(SCRIPT_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      })
-        .then(r => r.json())
-        .then(res => {
-          document.getElementById('form-status').textContent =
-            res.status === 'success'
-              ? 'Thanks! We received your message.'
-              : 'Oops—something went wrong.';
-          e.target.reset();
+        mode:   'no-cors',                // ← skip CORS preflight
+        body:   JSON.stringify(data)      // ← no custom headers
+        })
+        .then(() => {
+        status.textContent = '✅ Thanks! We got your message.';
+        form.reset();
         })
         .catch(() => {
-          document.getElementById('form-status').textContent =
-            'Network error. Please try again.';
+        status.textContent = '⚠️ Oops—something went wrong.';
         });
     });
   </script>
